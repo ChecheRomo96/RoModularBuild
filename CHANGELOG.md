@@ -2,6 +2,13 @@
 
 All notable changes to RoModularBuild are recorded here.
 
+## [0.1.1] - 2026-09-28
+
+### Fixed
+
+- use explicit Bash and PowerShell validation steps so GitHub Actions can
+  validate and expand the three-platform job matrix.
+
 ## [0.1.0] - 2026-09-28
 
 ### Added

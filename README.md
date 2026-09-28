@@ -7,7 +7,7 @@ sharing project policy.
 
 ## Current status
 
-Version `0.1.0` is the bootstrap contract. It establishes repository ownership,
+Version `0.1.1` is the bootstrap contract. It establishes repository ownership,
 versioning, preset namespaces, validation entrypoints, and restricted-use
 licensing. It does **not** yet replace any consumer repository's checked-in
 toolchains or lifecycle scripts.

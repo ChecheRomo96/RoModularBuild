@@ -1,6 +1,6 @@
 # Bootstrap contract
 
-Version `0.1.0` establishes the repository boundary without migrating consumer
+Version `0.1.1` establishes the repository boundary without migrating consumer
 behavior.
 
 ## Naming

@@ -18,16 +18,10 @@ jobs:
         include:
           - name: Linux Bash
             os: ubuntu-latest
-            shell: bash
-            command: ./scripts/validate.sh
           - name: macOS Bash
             os: macos-latest
-            shell: bash
-            command: ./scripts/validate.sh
           - name: Windows PowerShell
             os: windows-latest
-            shell: pwsh
-            command: ./scripts/validate.ps1
 
     steps:
       - name: Checkout repository
@@ -36,6 +30,12 @@ jobs:
       - name: Show CMake version
         run: cmake --version
 
-      - name: Validate repository contract
-        shell: ${{ matrix.shell }}
-        run: ${{ matrix.command }}
+      - name: Validate repository contract with Bash
+        if: runner.os != 'Windows'
+        shell: bash
+        run: ./scripts/validate.sh
+
+      - name: Validate repository contract with PowerShell
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./scripts/validate.ps1

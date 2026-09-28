@@ -1,7 +1,7 @@
 # Toolchains
 
 This directory is reserved for the project-independent toolchains extracted in
-phase 2. Version `0.1.0` intentionally contains no production toolchain: the
+phase 2. Version `0.1.1` intentionally contains no production toolchain: the
 bootstrap must first prove repository ownership, naming, versioning, and
 validation without changing any consumer behavior.
 
