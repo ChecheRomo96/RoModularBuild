@@ -1,0 +1,13 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "romodular_arm_none_eabi_base",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "ROMODULAR_PROFILE_FAMILY": "arm-none-eabi"
+      }
+    }
+  ]
+}

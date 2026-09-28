@@ -1,0 +1,40 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "cmake/presets/native.json",
+    "cmake/presets/arm-none-eabi.json",
+    "cmake/presets/avr-gcc.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "romodular_selftest",
+      "displayName": "RoModularBuild repository self-test",
+      "description": "Validates the bootstrap contract without a consumer project.",
+      "binaryDir": "${sourceDir}/build/selftest",
+      "cacheVariables": {
+        "BUILD_TESTING": "ON",
+        "ROMODULAR_BUILD_SELF_TESTS": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "romodular_selftest",
+      "configurePreset": "romodular_selftest"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "romodular_selftest",
+      "configurePreset": "romodular_selftest",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}

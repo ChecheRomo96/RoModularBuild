@@ -1,0 +1,41 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  repository-contract:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux Bash
+            os: ubuntu-latest
+            shell: bash
+            command: ./scripts/validate.sh
+          - name: macOS Bash
+            os: macos-latest
+            shell: bash
+            command: ./scripts/validate.sh
+          - name: Windows PowerShell
+            os: windows-latest
+            shell: pwsh
+            command: ./scripts/validate.ps1
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show CMake version
+        run: cmake --version
+
+      - name: Validate repository contract
+        shell: ${{ matrix.shell }}
+        run: ${{ matrix.command }}

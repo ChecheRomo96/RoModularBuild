@@ -1,0 +1,13 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "romodular_avr_gcc_base",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "ROMODULAR_PROFILE_FAMILY": "avr-gcc"
+      }
+    }
+  ]
+}
