@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 3.25)
+
 foreach(ROMODULAR_REQUIRED_VARIABLE
     ROMODULAR_ROOT
     ROMODULAR_PROFILE

@@ -7,7 +7,7 @@ sharing project policy.
 
 ## Current status
 
-Version `0.2.2` provides project-independent native, GNU Arm Embedded, and AVR-GCC
+Version `0.2.3` provides project-independent native, GNU Arm Embedded, and AVR-GCC
 profiles. The repository now owns generic compiler, architecture, ABI, and
 find-root behavior, but it does **not** own consumer feature options, public
 preset names, packaging, firmware, or release policy.

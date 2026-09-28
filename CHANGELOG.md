@@ -2,6 +2,13 @@
 
 All notable changes to RoModularBuild are recorded here.
 
+## [0.2.3] - 2026-09-28
+
+### Fixed
+
+- declare the repository's CMake policy baseline in standalone toolchain tests
+  so `IN_LIST` validation behaves consistently on every hosted runner.
+
 ## [0.2.2] - 2026-09-28
 
 ### Fixed
