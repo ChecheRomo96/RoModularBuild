@@ -4,9 +4,130 @@
     {
       "name": "romodular_native_base",
       "hidden": true,
+      "generator": "Ninja Multi-Config",
       "binaryDir": "${sourceDir}/build/${presetName}",
       "cacheVariables": {
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
         "ROMODULAR_PROFILE_FAMILY": "native"
+      }
+    },
+    {
+      "name": "romodular_macos_arm64",
+      "hidden": true,
+      "inherits": "romodular_native_base",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      },
+      "cacheVariables": {
+        "CMAKE_OSX_ARCHITECTURES": "arm64",
+        "ROMODULAR_PROFILE_ID": "macos_arm64"
+      }
+    },
+    {
+      "name": "romodular_macos_x64",
+      "hidden": true,
+      "inherits": "romodular_native_base",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      },
+      "cacheVariables": {
+        "CMAKE_OSX_ARCHITECTURES": "x86_64",
+        "ROMODULAR_PROFILE_ID": "macos_x64"
+      }
+    },
+    {
+      "name": "romodular_linux_gcc_x64",
+      "hidden": true,
+      "inherits": "romodular_native_base",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++",
+        "ROMODULAR_PROFILE_ID": "linux_gcc_x64"
+      }
+    },
+    {
+      "name": "romodular_linux_clang_x64",
+      "hidden": true,
+      "inherits": "romodular_native_base",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++",
+        "ROMODULAR_PROFILE_ID": "linux_clang_x64"
+      }
+    },
+    {
+      "name": "romodular_linux_gcc_arm64",
+      "hidden": true,
+      "inherits": "romodular_native_base",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++",
+        "ROMODULAR_PROFILE_ID": "linux_gcc_arm64"
+      }
+    },
+    {
+      "name": "romodular_linux_clang_arm64",
+      "hidden": true,
+      "inherits": "romodular_native_base",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++",
+        "ROMODULAR_PROFILE_ID": "linux_clang_arm64"
+      }
+    },
+    {
+      "name": "romodular_windows_msvc_x64",
+      "hidden": true,
+      "inherits": "romodular_native_base",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "cacheVariables": {
+        "ROMODULAR_PROFILE_ID": "windows_msvc_x64"
+      }
+    },
+    {
+      "name": "romodular_windows_clang_x64",
+      "hidden": true,
+      "inherits": "romodular_native_base",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++",
+        "ROMODULAR_PROFILE_ID": "windows_clang_x64"
       }
     }
   ]

@@ -7,10 +7,10 @@ sharing project policy.
 
 ## Current status
 
-Version `0.1.1` is the bootstrap contract. It establishes repository ownership,
-versioning, preset namespaces, validation entrypoints, and restricted-use
-licensing. It does **not** yet replace any consumer repository's checked-in
-toolchains or lifecycle scripts.
+Version `0.2.0` adds project-independent native, GNU Arm Embedded, and AVR-GCC
+profiles. The repository now owns generic compiler, architecture, ABI, and
+find-root behavior, but it does **not** own consumer feature options, public
+preset names, packaging, firmware, or release policy.
 
 The implementation progresses in independently reviewable phases:
 
@@ -21,7 +21,9 @@ The implementation progresses in independently reviewable phases:
 5. adoption by two independent consumers.
 
 See [Architecture](docs/Architecture.md) and
-[Bootstrap contract](docs/BootstrapContract.md).
+[Bootstrap contract](docs/BootstrapContract.md). The supported shared variables,
+profiles, and compatibility boundary are documented in
+[Toolchain contract](docs/ToolchainContract.md).
 
 ## Validate this repository
 

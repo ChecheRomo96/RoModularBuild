@@ -4,9 +4,21 @@
     {
       "name": "romodular_avr_gcc_base",
       "hidden": true,
+      "generator": "Ninja Multi-Config",
       "binaryDir": "${sourceDir}/build/${presetName}",
       "cacheVariables": {
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
         "ROMODULAR_PROFILE_FAMILY": "avr-gcc"
+      }
+    },
+    {
+      "name": "romodular_atmega328p_avrgcc_avr5",
+      "hidden": true,
+      "inherits": "romodular_avr_gcc_base",
+      "toolchainFile": "${fileDir}/../toolchains/avr-gcc/atmega328p.cmake",
+      "cacheVariables": {
+        "ROMODULAR_PROFILE_ID": "atmega328p_avrgcc_avr5"
       }
     }
   ]

@@ -2,6 +2,18 @@
 
 All notable changes to RoModularBuild are recorded here.
 
+## [0.2.0] - 2026-09-28
+
+### Added
+
+- project-independent GNU Arm Embedded and AVR-GCC toolchain implementations;
+- Cortex-M0+/soft, Cortex-M3/soft, Cortex-M4F/hard, Cortex-M7F/hard, and
+  ATmega328P/AVR5 profiles;
+- hidden native bases for supported macOS, Linux, and Windows compiler and
+  architecture identities;
+- standalone semantic tests for every embedded profile; and
+- a documented `ROMODULAR_*` toolchain contract for consumer adapters.
+
 ## [0.1.1] - 2026-09-28
 
 ### Fixed

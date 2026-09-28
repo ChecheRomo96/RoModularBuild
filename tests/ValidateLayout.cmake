@@ -11,12 +11,20 @@ set(ROMODULAR_REQUIRED_FILES
     cmake/presets/native.json
     cmake/presets/arm-none-eabi.json
     cmake/presets/avr-gcc.json
+    cmake/toolchains/arm-none-eabi.cmake
+    cmake/toolchains/arm-none-eabi/cortex-m0plus-soft.cmake
+    cmake/toolchains/arm-none-eabi/cortex-m3-soft.cmake
+    cmake/toolchains/arm-none-eabi/cortex-m4f-hard.cmake
+    cmake/toolchains/arm-none-eabi/cortex-m7f-hard.cmake
+    cmake/toolchains/avr-gcc.cmake
+    cmake/toolchains/avr-gcc/atmega328p.cmake
     scripts/common.sh
     scripts/common.ps1
     scripts/validate.sh
     scripts/validate.ps1
     docs/Architecture.md
     docs/BootstrapContract.md
+    docs/ToolchainContract.md
 )
 
 foreach(ROMODULAR_REQUIRED_FILE IN LISTS ROMODULAR_REQUIRED_FILES)
@@ -45,6 +53,13 @@ set(ROMODULAR_GENERIC_FILES
     cmake/presets/native.json
     cmake/presets/arm-none-eabi.json
     cmake/presets/avr-gcc.json
+    cmake/toolchains/arm-none-eabi.cmake
+    cmake/toolchains/arm-none-eabi/cortex-m0plus-soft.cmake
+    cmake/toolchains/arm-none-eabi/cortex-m3-soft.cmake
+    cmake/toolchains/arm-none-eabi/cortex-m4f-hard.cmake
+    cmake/toolchains/arm-none-eabi/cortex-m7f-hard.cmake
+    cmake/toolchains/avr-gcc.cmake
+    cmake/toolchains/avr-gcc/atmega328p.cmake
     scripts/common.sh
     scripts/common.ps1
     scripts/validate.sh
