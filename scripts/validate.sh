@@ -8,6 +8,6 @@ sh -n scripts/common.sh scripts/validate.sh
 romodular_run_cmake --list-presets=all
 romodular_run_cmake --preset romodular_selftest --fresh
 romodular_run_cmake --build --preset romodular_selftest
-romodular_run_cmake --build build/selftest --target test
+romodular_run_ctest --preset romodular_selftest
 
 printf '%s\n' "RoModularBuild validation passed."

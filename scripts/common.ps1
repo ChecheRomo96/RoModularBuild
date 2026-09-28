@@ -12,8 +12,21 @@ function Invoke-RoModularCMake {
     }
 }
 
+function Invoke-RoModularCTest {
+    param([Parameter(Mandatory = $true)][string[]]$Arguments)
+
+    & ctest @Arguments
+    if ($LASTEXITCODE -ne 0) {
+        throw "ctest failed with exit code $LASTEXITCODE"
+    }
+}
+
 if (-not (Get-Command cmake -ErrorAction SilentlyContinue)) {
     throw "Required command not found: cmake"
+}
+
+if (-not (Get-Command ctest -ErrorAction SilentlyContinue)) {
+    throw "Required command not found: ctest"
 }
 
 Set-Location $script:RoModularRoot

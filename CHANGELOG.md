@@ -7,7 +7,9 @@ All notable changes to RoModularBuild are recorded here.
 ### Fixed
 
 - use explicit Bash and PowerShell validation steps so GitHub Actions can
-  validate and expand the three-platform job matrix.
+  validate and expand the three-platform job matrix; and
+- invoke CTest directly so repository tests are independent of generator-
+  specific target names.
 
 ## [0.1.0] - 2026-09-28
 

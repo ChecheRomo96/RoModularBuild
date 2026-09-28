@@ -23,6 +23,6 @@ if ($parseErrors.Count -ne 0) {
 Invoke-RoModularCMake -Arguments @("--list-presets=all")
 Invoke-RoModularCMake -Arguments @("--preset", "romodular_selftest", "--fresh")
 Invoke-RoModularCMake -Arguments @("--build", "--preset", "romodular_selftest")
-Invoke-RoModularCMake -Arguments @("--build", "build/selftest", "--target", "test")
+Invoke-RoModularCTest -Arguments @("--preset", "romodular_selftest")
 
 Write-Host "RoModularBuild validation passed."

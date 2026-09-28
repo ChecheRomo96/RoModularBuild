@@ -32,6 +32,7 @@
     {
       "name": "romodular_selftest",
       "configurePreset": "romodular_selftest",
+      "configuration": "Debug",
       "output": {
         "outputOnFailure": true
       }

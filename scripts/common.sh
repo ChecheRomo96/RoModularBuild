@@ -16,5 +16,10 @@ romodular_run_cmake() {
     cmake "$@" || romodular_die "cmake command failed"
 }
 
+romodular_run_ctest() {
+    ctest "$@" || romodular_die "ctest command failed"
+}
+
 romodular_require_command cmake
+romodular_require_command ctest
 cd "$ROMODULAR_ROOT" || romodular_die "cannot enter repository root: $ROMODULAR_ROOT"
