@@ -15,6 +15,11 @@ endif()
 
 project(RoModularBuild VERSION ${ROMODULAR_VERSION} LANGUAGES NONE)
 
+install(
+    FILES VERSION
+    DESTINATION share/RoModularBuild
+)
+
 option(ROMODULAR_BUILD_SELF_TESTS
     "Enable RoModularBuild repository contract tests"
     ON

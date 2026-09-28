@@ -15,10 +15,20 @@
       "name": "romodular_selftest",
       "displayName": "RoModularBuild repository self-test",
       "description": "Validates the bootstrap contract without a consumer project.",
-      "binaryDir": "${sourceDir}/build/selftest",
+      "binaryDir": "${sourceDir}/build/romodular_selftest",
       "cacheVariables": {
         "BUILD_TESTING": "ON",
         "ROMODULAR_BUILD_SELF_TESTS": "ON"
+      }
+    },
+    {
+      "name": "romodular_no_tests",
+      "displayName": "RoModularBuild empty-test policy fixture",
+      "description": "Validates explicit handling of a configured project with no tests.",
+      "binaryDir": "${sourceDir}/build/romodular_no_tests",
+      "cacheVariables": {
+        "BUILD_TESTING": "OFF",
+        "ROMODULAR_BUILD_SELF_TESTS": "OFF"
       }
     }
   ],
@@ -26,6 +36,10 @@
     {
       "name": "romodular_selftest",
       "configurePreset": "romodular_selftest"
+    },
+    {
+      "name": "romodular_no_tests",
+      "configurePreset": "romodular_no_tests"
     }
   ],
   "testPresets": [

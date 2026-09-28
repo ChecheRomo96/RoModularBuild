@@ -50,3 +50,9 @@ MCU or board concern.
 
 Debug and Release are configurations of one compatibility profile, not separate
 preset or package identities.
+
+The lifecycle scripts are engine entrypoints, not consumer-facing policy. A
+consumer keeps its established commands and forwards them through a small
+adapter that supplies project roots and optional cache arguments. Package
+creation, package identity checks, examples, documentation, and release
+publication remain consumer-owned orchestration.

@@ -20,11 +20,22 @@ set(ROMODULAR_REQUIRED_FILES
     cmake/toolchains/avr-gcc/atmega328p.cmake
     scripts/common.sh
     scripts/common.ps1
+    scripts/configure.sh
+    scripts/configure.ps1
+    scripts/build.sh
+    scripts/build.ps1
+    scripts/test.sh
+    scripts/test.ps1
+    scripts/install.sh
+    scripts/install.ps1
+    scripts/clean.sh
+    scripts/clean.ps1
     scripts/validate.sh
     scripts/validate.ps1
     docs/Architecture.md
     docs/BootstrapContract.md
     docs/ToolchainContract.md
+    docs/WorkflowContract.md
 )
 
 foreach(ROMODULAR_REQUIRED_FILE IN LISTS ROMODULAR_REQUIRED_FILES)
@@ -62,6 +73,16 @@ set(ROMODULAR_GENERIC_FILES
     cmake/toolchains/avr-gcc/atmega328p.cmake
     scripts/common.sh
     scripts/common.ps1
+    scripts/configure.sh
+    scripts/configure.ps1
+    scripts/build.sh
+    scripts/build.ps1
+    scripts/test.sh
+    scripts/test.ps1
+    scripts/install.sh
+    scripts/install.ps1
+    scripts/clean.sh
+    scripts/clean.ps1
     scripts/validate.sh
     scripts/validate.ps1
 )

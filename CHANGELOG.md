@@ -2,6 +2,20 @@
 
 All notable changes to RoModularBuild are recorded here.
 
+## [0.3.0] - 2026-09-28
+
+### Added
+
+- project-independent configure, build, test, install, and clean workflow
+  engines for Bash and PowerShell;
+- an adapter contract for consumer roots, configurations, tests, examples, and
+  public command hints;
+- cross-platform lifecycle validation covering full fresh-state removal,
+  Debug builds, JUnit output, Release installation, scoped cleanup, and the
+  explicit empty-test-suite policy; and
+- a workflow contract that keeps packaging, releases, and project-specific
+  options in each consumer repository.
+
 ## [0.2.3] - 2026-09-28
 
 ### Fixed

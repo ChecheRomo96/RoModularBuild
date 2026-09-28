@@ -7,10 +7,11 @@ sharing project policy.
 
 ## Current status
 
-Version `0.2.3` provides project-independent native, GNU Arm Embedded, and AVR-GCC
-profiles. The repository now owns generic compiler, architecture, ABI, and
-find-root behavior, but it does **not** own consumer feature options, public
-preset names, packaging, firmware, or release policy.
+Version `0.3.0` provides project-independent native, GNU Arm Embedded, and
+AVR-GCC profiles plus configure, build, test, install, and clean workflow
+engines. Consumers retain thin adapters that define their roots and optional
+testing or example cache arguments. The repository does **not** own consumer
+feature options, public preset names, packaging, firmware, or release policy.
 
 The implementation progresses in independently reviewable phases:
 
@@ -23,7 +24,9 @@ The implementation progresses in independently reviewable phases:
 See [Architecture](docs/Architecture.md) and
 [Bootstrap contract](docs/BootstrapContract.md). The supported shared variables,
 profiles, and compatibility boundary are documented in
-[Toolchain contract](docs/ToolchainContract.md).
+[Toolchain contract](docs/ToolchainContract.md). Script adapter inputs and
+lifecycle behavior are documented in
+[Workflow contract](docs/WorkflowContract.md).
 
 ## Validate this repository
 
