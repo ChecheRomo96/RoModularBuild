@@ -1,6 +1,6 @@
 # Toolchain contract
 
-RoModularBuild `0.2.1` owns project-independent native and embedded compiler
+RoModularBuild `0.2.2` owns project-independent native and embedded compiler
 profiles. Consumers inherit hidden preset bases and keep their public preset
 names, project feature options, and package identities local.
 

@@ -17,6 +17,20 @@ set(ROMODULAR_ARM_ADDITIONAL_FLAGS "" CACHE STRING
 set(ROMODULAR_ARM_SYSROOT "" CACHE PATH
     "Optional target sysroot containing the C runtime headers and libraries")
 
+# CMake re-evaluates the toolchain inside compiler-detection try_compile()
+# projects. Forward every configurable input so those nested projects observe
+# the same target contract as the parent configuration.
+list(APPEND CMAKE_TRY_COMPILE_PLATFORM_VARIABLES
+    ROMODULAR_ARM_TOOLCHAIN_ROOT
+    ROMODULAR_ARM_TOOLCHAIN_PREFIX
+    ROMODULAR_ARM_CPU
+    ROMODULAR_FLOAT_ABI
+    ROMODULAR_FPU
+    ROMODULAR_ARM_ADDITIONAL_FLAGS
+    ROMODULAR_ARM_SYSROOT
+)
+list(REMOVE_DUPLICATES CMAKE_TRY_COMPILE_PLATFORM_VARIABLES)
+
 set(CMAKE_SYSTEM_PROCESSOR "${ROMODULAR_ARM_CPU}")
 
 if(NOT ROMODULAR_ARM_SYSROOT STREQUAL "")

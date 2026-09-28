@@ -16,6 +16,18 @@ set(ROMODULAR_AVR_ARCHITECTURE "avr" CACHE STRING
 set(ROMODULAR_AVR_ADDITIONAL_FLAGS "" CACHE STRING
     "Additional flags shared by C and C++")
 
+# CMake re-evaluates the toolchain inside compiler-detection try_compile()
+# projects. Forward every configurable input so those nested projects observe
+# the same target contract as the parent configuration.
+list(APPEND CMAKE_TRY_COMPILE_PLATFORM_VARIABLES
+    ROMODULAR_AVR_TOOLCHAIN_ROOT
+    ROMODULAR_AVR_TOOLCHAIN_PREFIX
+    ROMODULAR_AVR_MCU
+    ROMODULAR_AVR_ARCHITECTURE
+    ROMODULAR_AVR_ADDITIONAL_FLAGS
+)
+list(REMOVE_DUPLICATES CMAKE_TRY_COMPILE_PLATFORM_VARIABLES)
+
 if(ROMODULAR_AVR_MCU STREQUAL "")
     message(FATAL_ERROR
         "ROMODULAR_AVR_MCU must name the exact AVR target (for example atmega328p)"

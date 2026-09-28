@@ -2,6 +2,14 @@
 
 All notable changes to RoModularBuild are recorded here.
 
+## [0.2.2] - 2026-09-28
+
+### Fixed
+
+- forward every configurable embedded toolchain input into CMake
+  `try_compile()` projects, allowing generic toolchains to be configured
+  directly through `ROMODULAR_*` cache variables.
+
 ## [0.2.1] - 2026-09-28
 
 ### Fixed
