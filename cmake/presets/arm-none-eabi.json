@@ -8,45 +8,32 @@
       "binaryDir": "${sourceDir}/build/${presetName}",
       "cacheVariables": {
         "CMAKE_CONFIGURATION_TYPES": "Debug;Release",
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-        "ROMODULAR_PROFILE_FAMILY": "arm-none-eabi"
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       }
     },
     {
       "name": "romodular_arm_none_eabi_cortex_m0plus_soft",
       "hidden": true,
       "inherits": "romodular_arm_none_eabi_base",
-      "toolchainFile": "${fileDir}/../toolchains/arm-none-eabi/cortex-m0plus-soft.cmake",
-      "cacheVariables": {
-        "ROMODULAR_PROFILE_ID": "arm_none_eabi_cortex_m0plus_soft"
-      }
+      "toolchainFile": "${fileDir}/../toolchains/arm-none-eabi/cortex-m0plus-soft.cmake"
     },
     {
       "name": "romodular_arm_none_eabi_cortex_m3_soft",
       "hidden": true,
       "inherits": "romodular_arm_none_eabi_base",
-      "toolchainFile": "${fileDir}/../toolchains/arm-none-eabi/cortex-m3-soft.cmake",
-      "cacheVariables": {
-        "ROMODULAR_PROFILE_ID": "arm_none_eabi_cortex_m3_soft"
-      }
+      "toolchainFile": "${fileDir}/../toolchains/arm-none-eabi/cortex-m3-soft.cmake"
     },
     {
       "name": "romodular_arm_none_eabi_cortex_m4f_hard",
       "hidden": true,
       "inherits": "romodular_arm_none_eabi_base",
-      "toolchainFile": "${fileDir}/../toolchains/arm-none-eabi/cortex-m4f-hard.cmake",
-      "cacheVariables": {
-        "ROMODULAR_PROFILE_ID": "arm_none_eabi_cortex_m4f_hard"
-      }
+      "toolchainFile": "${fileDir}/../toolchains/arm-none-eabi/cortex-m4f-hard.cmake"
     },
     {
       "name": "romodular_arm_none_eabi_cortex_m7f_hard",
       "hidden": true,
       "inherits": "romodular_arm_none_eabi_base",
-      "toolchainFile": "${fileDir}/../toolchains/arm-none-eabi/cortex-m7f-hard.cmake",
-      "cacheVariables": {
-        "ROMODULAR_PROFILE_ID": "arm_none_eabi_cortex_m7f_hard"
-      }
+      "toolchainFile": "${fileDir}/../toolchains/arm-none-eabi/cortex-m7f-hard.cmake"
     }
   ]
 }

@@ -2,6 +2,13 @@
 
 All notable changes to RoModularBuild are recorded here.
 
+## [0.2.1] - 2026-09-28
+
+### Fixed
+
+- remove unused informational cache variables from hidden preset bases so
+  consumer projects configure without spurious CMake warnings.
+
 ## [0.2.0] - 2026-09-28
 
 ### Added

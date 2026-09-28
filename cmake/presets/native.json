@@ -8,8 +8,7 @@
       "binaryDir": "${sourceDir}/build/${presetName}",
       "cacheVariables": {
         "CMAKE_CONFIGURATION_TYPES": "Debug;Release",
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-        "ROMODULAR_PROFILE_FAMILY": "native"
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       }
     },
     {
@@ -22,8 +21,7 @@
         "rhs": "Darwin"
       },
       "cacheVariables": {
-        "CMAKE_OSX_ARCHITECTURES": "arm64",
-        "ROMODULAR_PROFILE_ID": "macos_arm64"
+        "CMAKE_OSX_ARCHITECTURES": "arm64"
       }
     },
     {
@@ -36,8 +34,7 @@
         "rhs": "Darwin"
       },
       "cacheVariables": {
-        "CMAKE_OSX_ARCHITECTURES": "x86_64",
-        "ROMODULAR_PROFILE_ID": "macos_x64"
+        "CMAKE_OSX_ARCHITECTURES": "x86_64"
       }
     },
     {
@@ -51,8 +48,7 @@
       },
       "cacheVariables": {
         "CMAKE_C_COMPILER": "gcc",
-        "CMAKE_CXX_COMPILER": "g++",
-        "ROMODULAR_PROFILE_ID": "linux_gcc_x64"
+        "CMAKE_CXX_COMPILER": "g++"
       }
     },
     {
@@ -66,8 +62,7 @@
       },
       "cacheVariables": {
         "CMAKE_C_COMPILER": "clang",
-        "CMAKE_CXX_COMPILER": "clang++",
-        "ROMODULAR_PROFILE_ID": "linux_clang_x64"
+        "CMAKE_CXX_COMPILER": "clang++"
       }
     },
     {
@@ -81,8 +76,7 @@
       },
       "cacheVariables": {
         "CMAKE_C_COMPILER": "gcc",
-        "CMAKE_CXX_COMPILER": "g++",
-        "ROMODULAR_PROFILE_ID": "linux_gcc_arm64"
+        "CMAKE_CXX_COMPILER": "g++"
       }
     },
     {
@@ -96,8 +90,7 @@
       },
       "cacheVariables": {
         "CMAKE_C_COMPILER": "clang",
-        "CMAKE_CXX_COMPILER": "clang++",
-        "ROMODULAR_PROFILE_ID": "linux_clang_arm64"
+        "CMAKE_CXX_COMPILER": "clang++"
       }
     },
     {
@@ -110,9 +103,6 @@
         "type": "equals",
         "lhs": "${hostSystemName}",
         "rhs": "Windows"
-      },
-      "cacheVariables": {
-        "ROMODULAR_PROFILE_ID": "windows_msvc_x64"
       }
     },
     {
@@ -126,8 +116,7 @@
       },
       "cacheVariables": {
         "CMAKE_C_COMPILER": "clang",
-        "CMAKE_CXX_COMPILER": "clang++",
-        "ROMODULAR_PROFILE_ID": "windows_clang_x64"
+        "CMAKE_CXX_COMPILER": "clang++"
       }
     }
   ]
