@@ -32,8 +32,15 @@ set(ROMODULAR_REQUIRED_FILES
     scripts/clean.ps1
     scripts/validate.sh
     scripts/validate.ps1
+    actions/project-workflow/action.yml
+    actions/project-workflow/run.sh
+    actions/project-workflow/run.ps1
+    actions/report-toolchain/action.yml
+    actions/report-toolchain/report.sh
+    actions/report-toolchain/report.ps1
     docs/Architecture.md
     docs/BootstrapContract.md
+    docs/CiContract.md
     docs/ToolchainContract.md
     docs/WorkflowContract.md
 )
@@ -85,6 +92,12 @@ set(ROMODULAR_GENERIC_FILES
     scripts/clean.ps1
     scripts/validate.sh
     scripts/validate.ps1
+    actions/project-workflow/action.yml
+    actions/project-workflow/run.sh
+    actions/project-workflow/run.ps1
+    actions/report-toolchain/action.yml
+    actions/report-toolchain/report.sh
+    actions/report-toolchain/report.ps1
 )
 
 foreach(ROMODULAR_GENERIC_FILE IN LISTS ROMODULAR_GENERIC_FILES)

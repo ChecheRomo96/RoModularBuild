@@ -1,0 +1,30 @@
+name: Report RoModular toolchain
+description: Report the CMake generator tools, selected compiler, and hosted runner identity.
+
+inputs:
+  compiler:
+    description: Compiler command on Unix, or msvc/clang/compiler command on Windows.
+    required: true
+  require-ninja:
+    description: Require and report Ninja in addition to CMake.
+    required: false
+    default: "true"
+
+runs:
+  using: composite
+  steps:
+    - name: Report Unix toolchain
+      if: runner.os != 'Windows'
+      shell: bash
+      env:
+        ROMODULAR_CI_COMPILER: ${{ inputs.compiler }}
+        ROMODULAR_CI_REQUIRE_NINJA: ${{ inputs.require-ninja }}
+      run: '"${{ github.action_path }}/report.sh"'
+
+    - name: Report Windows toolchain
+      if: runner.os == 'Windows'
+      shell: pwsh
+      env:
+        ROMODULAR_CI_COMPILER: ${{ inputs.compiler }}
+        ROMODULAR_CI_REQUIRE_NINJA: ${{ inputs.require-ninja }}
+      run: '& "${{ github.action_path }}/report.ps1"'

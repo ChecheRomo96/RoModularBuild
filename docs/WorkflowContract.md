@@ -1,6 +1,6 @@
 # Workflow contract
 
-Version `0.3.0` owns the generic configure, build, test, install, and clean
+Version `0.4.0` owns the generic configure, build, test, install, and clean
 lifecycle for CMake preset consumers. A consumer exposes its existing public
 commands through thin repository-local wrappers and configures the engine with
 environment variables.

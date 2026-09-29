@@ -7,11 +7,13 @@ sharing project policy.
 
 ## Current status
 
-Version `0.3.0` provides project-independent native, GNU Arm Embedded, and
-AVR-GCC profiles plus configure, build, test, install, and clean workflow
-engines. Consumers retain thin adapters that define their roots and optional
-testing or example cache arguments. The repository does **not** own consumer
-feature options, public preset names, packaging, firmware, or release policy.
+Version `0.4.0` provides project-independent native, GNU Arm Embedded, and
+AVR-GCC profiles; configure, build, test, install, and clean workflow engines;
+and pinned composite actions that invoke those workflows consistently on Bash
+and PowerShell runners. Consumers retain thin adapters that define their roots
+and optional testing or example cache arguments. The repository does **not**
+own consumer feature options, public preset names, CI triggers, permissions,
+packaging, artifacts, firmware, or release policy.
 
 The implementation progresses in independently reviewable phases:
 
@@ -26,7 +28,8 @@ See [Architecture](docs/Architecture.md) and
 profiles, and compatibility boundary are documented in
 [Toolchain contract](docs/ToolchainContract.md). Script adapter inputs and
 lifecycle behavior are documented in
-[Workflow contract](docs/WorkflowContract.md).
+[Workflow contract](docs/WorkflowContract.md). The local-action interface and
+single-pin CI model are documented in [CI contract](docs/CiContract.md).
 
 ## Validate this repository
 
@@ -56,6 +59,10 @@ consumer project.
   scripts, and hardware evidence remain owned by each consumer.
 - Existing consumer commands must remain functional while migration is in
   progress.
+- Composite actions are invoked through the checked-out submodule path, so the
+  consumer gitlink remains the single authoritative RoModularBuild pin.
+- CI triggers, matrices, permissions, artifact policy, secrets, and deployment
+  remain in the consumer repository.
 
 ## License
 

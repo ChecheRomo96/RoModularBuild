@@ -1,0 +1,114 @@
+name: RoModular CMake project workflow
+description: Run one pinned RoModular lifecycle command through a consumer repository adapter.
+
+inputs:
+  command:
+    description: "Lifecycle command: configure, build, test, install, or clean."
+    required: true
+  preset:
+    description: Public CMake preset owned by the consumer repository.
+    required: false
+    default: ""
+  configuration:
+    description: Optional Debug or Release configuration.
+    required: false
+    default: ""
+  target:
+    description: Optional CMake build target.
+    required: false
+    default: ""
+  parallel:
+    description: Optional positive parallel job count; zero uses the build-tool default.
+    required: false
+    default: "0"
+  filter:
+    description: Optional CTest regular-expression filter.
+    required: false
+    default: ""
+  junit:
+    description: Optional consumer-relative JUnit output path.
+    required: false
+    default: ""
+  prefix:
+    description: Optional consumer-relative installation prefix.
+    required: false
+    default: ""
+  fresh:
+    description: Remove the complete preset build tree before configuring.
+    required: false
+    default: "false"
+  clean-first:
+    description: Ask CMake to clean the selected targets before building.
+    required: false
+    default: "false"
+  examples-on:
+    description: Enable the consumer-defined examples cache argument while building.
+    required: false
+    default: "false"
+  allow-no-tests:
+    description: Allow CTest to discover an empty test suite.
+    required: false
+    default: "false"
+  dist:
+    description: Include the matching distribution tree in a clean operation.
+    required: false
+    default: "false"
+  all:
+    description: Clean every consumer build tree instead of one preset.
+    required: false
+    default: "false"
+  project-directory:
+    description: Consumer repository root, relative to the GitHub workspace or absolute.
+    required: false
+    default: "."
+  script-directory:
+    description: Consumer-relative directory containing the lifecycle adapter scripts.
+    required: false
+    default: "scripts"
+
+runs:
+  using: composite
+  steps:
+    - name: Run lifecycle command with Bash
+      if: runner.os != 'Windows'
+      shell: bash
+      env:
+        ROMODULAR_CI_COMMAND: ${{ inputs.command }}
+        ROMODULAR_CI_PRESET: ${{ inputs.preset }}
+        ROMODULAR_CI_CONFIGURATION: ${{ inputs.configuration }}
+        ROMODULAR_CI_TARGET: ${{ inputs.target }}
+        ROMODULAR_CI_PARALLEL: ${{ inputs.parallel }}
+        ROMODULAR_CI_FILTER: ${{ inputs.filter }}
+        ROMODULAR_CI_JUNIT: ${{ inputs.junit }}
+        ROMODULAR_CI_PREFIX: ${{ inputs.prefix }}
+        ROMODULAR_CI_FRESH: ${{ inputs.fresh }}
+        ROMODULAR_CI_CLEAN_FIRST: ${{ inputs.clean-first }}
+        ROMODULAR_CI_EXAMPLES_ON: ${{ inputs.examples-on }}
+        ROMODULAR_CI_ALLOW_NO_TESTS: ${{ inputs.allow-no-tests }}
+        ROMODULAR_CI_DIST: ${{ inputs.dist }}
+        ROMODULAR_CI_ALL: ${{ inputs.all }}
+        ROMODULAR_CI_PROJECT_DIRECTORY: ${{ inputs.project-directory }}
+        ROMODULAR_CI_SCRIPT_DIRECTORY: ${{ inputs.script-directory }}
+      run: '"${{ github.action_path }}/run.sh"'
+
+    - name: Run lifecycle command with PowerShell
+      if: runner.os == 'Windows'
+      shell: pwsh
+      env:
+        ROMODULAR_CI_COMMAND: ${{ inputs.command }}
+        ROMODULAR_CI_PRESET: ${{ inputs.preset }}
+        ROMODULAR_CI_CONFIGURATION: ${{ inputs.configuration }}
+        ROMODULAR_CI_TARGET: ${{ inputs.target }}
+        ROMODULAR_CI_PARALLEL: ${{ inputs.parallel }}
+        ROMODULAR_CI_FILTER: ${{ inputs.filter }}
+        ROMODULAR_CI_JUNIT: ${{ inputs.junit }}
+        ROMODULAR_CI_PREFIX: ${{ inputs.prefix }}
+        ROMODULAR_CI_FRESH: ${{ inputs.fresh }}
+        ROMODULAR_CI_CLEAN_FIRST: ${{ inputs.clean-first }}
+        ROMODULAR_CI_EXAMPLES_ON: ${{ inputs.examples-on }}
+        ROMODULAR_CI_ALLOW_NO_TESTS: ${{ inputs.allow-no-tests }}
+        ROMODULAR_CI_DIST: ${{ inputs.dist }}
+        ROMODULAR_CI_ALL: ${{ inputs.all }}
+        ROMODULAR_CI_PROJECT_DIRECTORY: ${{ inputs.project-directory }}
+        ROMODULAR_CI_SCRIPT_DIRECTORY: ${{ inputs.script-directory }}
+      run: '& "${{ github.action_path }}/run.ps1"'

@@ -2,6 +2,20 @@
 
 All notable changes to RoModularBuild are recorded here.
 
+## [0.4.0] - 2026-09-28
+
+### Added
+
+- a cross-platform `project-workflow` composite action for the pinned
+  configure, build, test, install, and clean adapter commands;
+- a project-independent `report-toolchain` composite action for native hosted
+  runners;
+- hosted Linux, macOS, and Windows acceptance coverage for the
+  composite-action contract;
+  and
+- a CI contract that retains triggers, runners, permissions, artifacts,
+  packaging, and release policy in each consumer repository.
+
 ## [0.3.0] - 2026-09-28
 
 ### Added

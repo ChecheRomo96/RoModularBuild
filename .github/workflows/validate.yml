@@ -18,10 +18,13 @@ jobs:
         include:
           - name: Linux Bash
             os: ubuntu-latest
+            compiler: c++
           - name: macOS Bash
             os: macos-latest
+            compiler: c++
           - name: Windows PowerShell
             os: windows-latest
+            compiler: msvc
 
     steps:
       - name: Checkout repository
@@ -29,6 +32,11 @@ jobs:
 
       - name: Show CMake version
         run: cmake --version
+
+      - name: Report hosted toolchain through the composite action
+        uses: ./actions/report-toolchain
+        with:
+          compiler: ${{ matrix.compiler }}
 
       - name: Validate repository contract with Bash
         if: runner.os != 'Windows'
@@ -39,3 +47,26 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: ./scripts/validate.ps1
+
+      - name: Test the project workflow composite action
+        uses: ./actions/project-workflow
+        with:
+          command: test
+          preset: romodular_selftest
+          configuration: Debug
+          fresh: true
+          parallel: 2
+          junit: build/validation/composite-action.xml
+
+      - name: Install through the project workflow composite action
+        uses: ./actions/project-workflow
+        with:
+          command: install
+          preset: romodular_selftest
+
+      - name: Clean through the project workflow composite action
+        uses: ./actions/project-workflow
+        with:
+          command: clean
+          preset: romodular_selftest
+          dist: true

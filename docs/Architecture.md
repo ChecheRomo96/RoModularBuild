@@ -26,7 +26,8 @@ The shared layer may own:
 - hidden native and cross-compilation preset bases;
 - argument validation and safe build-directory handling;
 - generic configure, build, test, install, and clean execution; and
-- reusable CI implementation after the workflow contract is stable.
+- reusable composite actions that invoke the stable workflow contract on Bash
+  and PowerShell runners.
 
 ## Consumer ownership
 
@@ -56,3 +57,9 @@ consumer keeps its established commands and forwards them through a small
 adapter that supplies project roots and optional cache arguments. Package
 creation, package identity checks, examples, documentation, and release
 publication remain consumer-owned orchestration.
+
+The composite actions are deliberately CI primitives rather than complete
+remote workflows. A consumer checks out its pinned submodule and invokes the
+actions through a local path. This preserves one authoritative infrastructure
+pin while leaving job matrices, hosted runners, permissions, secrets,
+artifacts, and deployment policy in the consumer repository.
