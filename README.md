@@ -1,9 +1,8 @@
 # RoModularBuild
 
 RoModularBuild is the versioned, project-independent build infrastructure for
-RoModular CMake repositories. It is being extracted incrementally so projects
-can share native and embedded toolchain profiles and workflow behavior without
-sharing project policy.
+RoModular CMake repositories. Projects share native and embedded toolchain
+profiles and workflow behavior through it without sharing project policy.
 
 ## Current status
 
@@ -15,13 +14,17 @@ and optional testing or example cache arguments. The repository does **not**
 own consumer feature options, public preset names, CI triggers, permissions,
 packaging, artifacts, firmware, or release policy.
 
-The implementation progresses in independently reviewable phases:
+The extraction was completed in independently reviewable phases:
 
 1. bootstrap and self-validation;
 2. toolchains and hidden preset bases;
 3. configure, build, test, install, and clean workflow engines;
 4. reusable CI; and
 5. adoption by two independent consumers.
+
+All five phases are complete. Foundation and MusicCompositionCore (MCC) both
+pin `v0.4.0` through thin adapters and pass their own native, embedded,
+package-consumer, and documentation workflows on it.
 
 See [Architecture](docs/Architecture.md) and
 [Bootstrap contract](docs/BootstrapContract.md). The supported shared variables,
