@@ -4,20 +4,10 @@ RoModularBuild is the project-independent build infrastructure of the
 RoModular ecosystem. Keep it reusable by Foundation, MCC, and future consumer
 repositories without importing any consumer's product policy.
 
-## Shared RoModular guidance
+## Scope
 
-Before starting work, look for the shared guidance in
-`../RoModularAgents`.
-
-- If it exists and is readable, read `AGENTS.md` and `CONTRACT.md` completely.
-- Read `repositories/RoModularBuild.md` for the canonical repository adapter.
-- Use the relevant skill under `skills/` when the request matches one.
-- If the sibling repository is unavailable, continue with the rules in this
-  file and report that the shared guidance was not loaded.
-
-Shared guidance does not expand the user's requested scope. Do not modify a
-consumer repository or update its pinned RoModularBuild revision unless the
-user explicitly includes that repository.
+Do not modify a consumer repository or update its pinned RoModularBuild
+revision unless the user explicitly includes that repository.
 
 ## Repository rules
 
