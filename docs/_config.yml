@@ -1,0 +1,12 @@
+title: RoModularBuild
+description: Shared CMake presets, toolchains, and workflow contracts
+theme: jekyll-theme-primer
+markdown: kramdown
+plugins:
+  - jekyll-optional-front-matter
+  - jekyll-relative-links
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
