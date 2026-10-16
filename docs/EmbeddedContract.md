@@ -1,4 +1,4 @@
-# Embedded board and transport contract — 0.6.0
+# Embedded board and transport contract — 0.6.1
 
 RoModularBuild owns reusable MCU startup, linker templates, bounded runtime,
 artifact conversion and generic programmer operations. It has no dependency
@@ -28,7 +28,8 @@ PowerShell uses `-Mcu`, `-File`, `-Log`, `-Tool`, `-Frequency`, `-Timeout`.
 The process must exit successfully before the timeout. Output is captured,
 but no application verdict is interpreted. A timeout remains an error even
 when the output contains a success marker. Bash requires GNU `timeout`;
-PowerShell requires an installed compatible simavr executable.
+PowerShell requires an installed compatible simavr executable. On macOS,
+install Homebrew `coreutils`; its `gtimeout` command is detected automatically.
 
 `scripts/avrdude.sh` accepts `--device`, `--programmer`, `--port`, `--file`
 (Intel HEX), optional `--tool`, `--config`, `--baud` (115200), `--no-erase`,
