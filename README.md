@@ -1,5 +1,7 @@
 # RoModularBuild
 
+**Documentation:** [Build infrastructure guides and contracts](docs/index.md)
+
 RoModularBuild is the versioned, project-independent build infrastructure for
 RoModular CMake repositories. Projects share native and embedded toolchain
 profiles and workflow behavior through it without sharing project policy.
