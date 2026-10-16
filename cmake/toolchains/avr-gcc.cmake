@@ -87,3 +87,8 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+# Imported C++ packages must use normal includes: AVR-GCC may assign implicit
+# C linkage to system headers, which makes their templates ill-formed.
+set(CMAKE_NO_SYSTEM_FROM_IMPORTED ON CACHE BOOL
+    "Use normal include paths for imported AVR C++ dependencies")
+

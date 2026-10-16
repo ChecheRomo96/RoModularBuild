@@ -40,6 +40,9 @@ if(ROMODULAR_PROFILE MATCHES "/arm-none-eabi/")
         ROMODULAR_ARM_SYSROOT
     )
 elseif(ROMODULAR_PROFILE MATCHES "/avr-gcc/")
+    if(NOT CMAKE_NO_SYSTEM_FROM_IMPORTED)
+        message(FATAL_ERROR "AVR imported C++ headers must retain C++ linkage")
+    endif()
     set(ROMODULAR_EXPECTED_PLATFORM_VARIABLES
         ROMODULAR_AVR_TOOLCHAIN_ROOT
         ROMODULAR_AVR_TOOLCHAIN_PREFIX

@@ -2,6 +2,14 @@
 
 All notable changes to RoModularBuild are recorded here.
 
+## [0.6.2] - 2026-10-16
+
+### Fixed
+
+- Keep imported AVR C++ package headers on normal include paths. AVR-GCC's
+  implicit C linkage for system headers otherwise rejects their templates.
+- Exercise an imported template header in both independent AVR board fixtures.
+
 ## [0.6.1] - 2026-10-16
 
 ### Fixed
