@@ -2,6 +2,14 @@
 
 All notable changes to RoModularBuild are recorded here.
 
+## [0.5.1] - 2026-10-15
+
+### Fixed
+
+- Compile CRT startup as freestanding independently of consumer STL/allocator
+  mode, so calling the application entry point also passes pedantic diagnostics.
+- Exercise pedantic warnings as errors in the independent board fixture.
+
 ## [0.5.0] - 2026-10-15
 
 ### Added

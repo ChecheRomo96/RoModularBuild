@@ -29,6 +29,9 @@ function(romodular_configure_stm32g0b1cbt6 target)
     set(_linker "${CMAKE_CURRENT_BINARY_DIR}/${target}-stm32g0b1cbt6.ld")
     configure_file("${_assets}/memory.ld.in" "${_linker}" @ONLY)
     target_sources("${target}" PRIVATE "${_assets}/startup.S" "${_assets}/runtime.cpp")
+    # CRT startup may call main; compile it as freestanding even when the
+    # application's std::allocator/STL code needs hosted library headers.
+    set_property(SOURCE "${_assets}/runtime.cpp" APPEND PROPERTY COMPILE_OPTIONS -ffreestanding)
     target_compile_definitions("${target}" PRIVATE STM32G0B1xx)
     set_target_properties("${target}" PROPERTIES SUFFIX ".elf")
     set_property(TARGET "${target}" APPEND PROPERTY LINK_DEPENDS "${_linker}")
