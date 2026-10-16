@@ -14,11 +14,12 @@ done
 [ -n "$MCU" ] && [ -f "$FILE" ] && [ -n "$LOG" ] || fail "mcu, existing firmware and log are required"
 case "$FREQUENCY:$SECONDS" in *[!0-9:]*|:*|*:) fail "invalid frequency or timeout" ;; esac
 [ "$FREQUENCY" -gt 0 ] && [ "$FREQUENCY" -le 100000000 ] && [ "$SECONDS" -gt 0 ] && [ "$SECONDS" -le 3600 ] || fail "invalid frequency or timeout"
+TIMEOUT=$(command -v timeout || command -v gtimeout) || fail "GNU timeout is required (macOS: brew install coreutils)"
 mkdir -p "$(dirname "$LOG")"
 set -- -m "$MCU" -f "$FREQUENCY" "$FILE"
 printf '%s\n' "$@" > "$LOG.command.txt"
 # A timeout is a transport failure even if the consumer printed a success marker.
-if timeout --kill-after=5 "$SECONDS" "$TOOL" "$@" > "$LOG" 2>&1; then
+if "$TIMEOUT" --kill-after=5 "$SECONDS" "$TOOL" "$@" > "$LOG" 2>&1; then
     cat "$LOG"
 else
     STATUS=$?; cat "$LOG"; printf 'simavr failed or timed out (%s)\n' "$STATUS" >&2; exit "$STATUS"

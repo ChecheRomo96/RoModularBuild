@@ -2,6 +2,13 @@
 
 All notable changes to RoModularBuild are recorded here.
 
+## [0.6.1] - 2026-10-16
+
+### Fixed
+
+- Detect Homebrew's `gtimeout` on macOS and install coreutils in the macOS CI
+  runner. Exercise the alternate command name in transport contract tests.
+
 ## [0.6.0] - 2026-10-16
 
 ### Added

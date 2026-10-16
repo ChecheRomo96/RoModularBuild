@@ -33,6 +33,10 @@ jobs:
       - name: Show CMake version
         run: cmake --version
 
+      - name: Install bounded-process tool on macOS
+        if: runner.os == 'macOS'
+        run: brew list coreutils >/dev/null 2>&1 || brew install coreutils
+
       - name: Report hosted toolchain through the composite action
         uses: ./actions/report-toolchain
         with:
