@@ -2,6 +2,17 @@
 
 All notable changes to RoModularBuild are recorded here.
 
+## [0.6.0] - 2026-10-16
+
+### Added
+
+- ATmega2560 / AVR6 toolchain profile and hidden preset alongside ATmega328P.
+- Shared AVR ELF/HEX/map/size artifacts and optional bare C++ allocation glue,
+  using the startup and linker supplied by avr-libc.
+- Generic avrdude flash and bounded simavr execution in Bash and PowerShell,
+  with failure/timeout contract tests and independent AVR fixture CI for both MCUs.
+  Application firmware and verdict interpretation remain consumer-owned.
+
 ## [0.5.1] - 2026-10-15
 
 ### Fixed

@@ -1,4 +1,4 @@
-# Embedded board and transport contract — 0.5.0
+# Embedded board and transport contract — 0.6.0
 
 RoModularBuild owns reusable MCU startup, linker templates, bounded runtime,
 artifact conversion and generic programmer operations. It has no dependency
@@ -6,6 +6,45 @@ on a consumer library, its targets, test cases, report magic or success rules.
 Consumers retain application firmware, SDK choices, public presets, feature
 options, test manifests, result decoding, CI matrices, artifact policy and
 actual hardware evidence. The dependency remains one-way.
+
+## AVR (ATmega328P / ATmega2560)
+
+Use the `avr-gcc/atmega328p.cmake` (AVR5) or `avr-gcc/atmega2560.cmake`
+(AVR6) toolchain profile. avr-libc supplies the startup and linker script
+selected by `-mmcu`; these are not copied into this repository.
+
+After creating an executable, include `cmake/boards/AVR.cmake` and call
+`romodular_configure_avr(MyFirmware)`. It adds the ELF suffix, map file,
+Intel HEX conversion (excluding EEPROM), and size output. Consumers select
+their clock (`F_CPU`), libraries, allocation policy and application entry point.
+The optional `MALLOC_NEW` argument supplies bare AVR scalar/array new/delete
+using malloc/free. Use it only without another C++ runtime or Arduino core
+that defines those operators; it relies on the toolchain's `-fcheck-new` and
+does not add exception or standard-library support.
+
+`scripts/simavr.sh` accepts `--mcu`, `--file`, `--log`, optional `--tool`,
+`--frequency` (16000000 Hz), and `--timeout` (60 seconds, maximum 3600).
+PowerShell uses `-Mcu`, `-File`, `-Log`, `-Tool`, `-Frequency`, `-Timeout`.
+The process must exit successfully before the timeout. Output is captured,
+but no application verdict is interpreted. A timeout remains an error even
+when the output contains a success marker. Bash requires GNU `timeout`;
+PowerShell requires an installed compatible simavr executable.
+
+`scripts/avrdude.sh` accepts `--device`, `--programmer`, `--port`, `--file`
+(Intel HEX), optional `--tool`, `--config`, `--baud` (115200), `--no-erase`,
+and `--log`. PowerShell uses the corresponding `-Device`, `-Programmer`,
+`-Port`, `-File`, `-Tool`, `-Config`, `-Baud`, `-NoErase`, `-Log` parameters.
+It writes flash using avrdude's normal signature checks and automatic write
+verification. It never supplies `-F` or `-V`, or writes fuses/lock bits.
+`--no-erase`/`-NoErase` explicitly selects avrdude `-D` for bootloaders that
+perform page erase. The consumer chooses the device, protocol and port;
+calling this script performs a real flash and replaces the application.
+Logs include a companion argument file. Nonzero tool status fails the helper.
+
+Reference: [avrdude options](https://avrdudes.github.io/avrdude/8.3/avrdude_4.html)
+and [simavr CLI](https://github.com/buserror/simavr/blob/master/simavr/sim/run_avr.c).
+The independent AVR fixture and fake transports test build/transport behavior;
+they do not establish physical board verification.
 
 ## STM32G0B1CBT6
 

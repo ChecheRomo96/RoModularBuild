@@ -14,6 +14,8 @@ sh -n \
     scripts/install.sh \
     scripts/clean.sh \
     scripts/stlink.sh \
+    scripts/avrdude.sh \
+    scripts/simavr.sh \
     scripts/validate.sh
 romodular_run_cmake --list-presets=all
 

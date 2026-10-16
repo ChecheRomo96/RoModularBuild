@@ -17,6 +17,13 @@ set(ROMODULAR_REQUIRED_FILES
     cmake/toolchains/arm-none-eabi/cortex-m4f-hard.cmake
     cmake/toolchains/arm-none-eabi/cortex-m7f-hard.cmake
     cmake/toolchains/avr-gcc.cmake
+    cmake/boards/avr/malloc-new.cpp
+    cmake/boards/AVR.cmake
+    scripts/avrdude.sh
+    scripts/avrdude.ps1
+    scripts/simavr.sh
+    scripts/simavr.ps1
+    cmake/toolchains/avr-gcc/atmega2560.cmake
     cmake/toolchains/avr-gcc/atmega328p.cmake
     scripts/common.sh
     scripts/common.ps1
@@ -90,6 +97,13 @@ set(ROMODULAR_GENERIC_FILES
     cmake/toolchains/arm-none-eabi/cortex-m4f-hard.cmake
     cmake/toolchains/arm-none-eabi/cortex-m7f-hard.cmake
     cmake/toolchains/avr-gcc.cmake
+    cmake/boards/avr/malloc-new.cpp
+    cmake/boards/AVR.cmake
+    scripts/avrdude.sh
+    scripts/avrdude.ps1
+    scripts/simavr.sh
+    scripts/simavr.ps1
+    cmake/toolchains/avr-gcc/atmega2560.cmake
     cmake/toolchains/avr-gcc/atmega328p.cmake
     scripts/common.sh
     scripts/common.ps1

@@ -16,6 +16,12 @@
       "hidden": true,
       "inherits": "romodular_avr_gcc_base",
       "toolchainFile": "${fileDir}/../toolchains/avr-gcc/atmega328p.cmake"
+    },
+    {
+      "name": "romodular_atmega2560_avrgcc_avr6",
+      "hidden": true,
+      "inherits": "romodular_avr_gcc_base",
+      "toolchainFile": "${fileDir}/../toolchains/avr-gcc/atmega2560.cmake"
     }
   ]
 }
