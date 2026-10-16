@@ -6,13 +6,15 @@ profiles and workflow behavior through it without sharing project policy.
 
 ## Current status
 
-Version `0.4.0` provides project-independent native, GNU Arm Embedded, and
+Version `0.5.0` provides project-independent native, GNU Arm Embedded, and
 AVR-GCC profiles; configure, build, test, install, and clean workflow engines;
 and pinned composite actions that invoke those workflows consistently on Bash
 and PowerShell runners. Consumers retain thin adapters that define their roots
 and optional testing or example cache arguments. The repository does **not**
 own consumer feature options, public preset names, CI triggers, permissions,
-packaging, artifacts, firmware, or release policy.
+packaging, application firmware or release policy. It now owns reusable
+STM32G0B1CBT6 startup, linker/runtime support and generic ST-LINK transports;
+see the [embedded contract](docs/EmbeddedContract.md).
 
 The extraction was completed in independently reviewable phases:
 
@@ -58,8 +60,9 @@ consumer project.
 - Public consumer presets remain in the consumer repository.
 - Shared presets are hidden and use the `romodular_` name prefix.
 - Shared cache variables use the `ROMODULAR_` prefix.
-- Project options, packaging, releases, examples, firmware startup, linker
-  scripts, and hardware evidence remain owned by each consumer.
+- Board startup, linker/runtime support and generic flashing/memory-read
+  operations belong here. Product options, firmware logic, tests, report
+  formats, packaging, releases, examples and hardware evidence belong to consumers.
 - Existing consumer commands must remain functional while migration is in
   progress.
 - Composite actions are invoked through the checked-out submodule path, so the

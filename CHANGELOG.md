@@ -2,6 +2,22 @@
 
 All notable changes to RoModularBuild are recorded here.
 
+## [0.5.0] - 2026-10-15
+
+### Added
+
+- Consumer-independent STM32G0B1CBT6 startup, linker template and bounded
+  newlib runtime, applied through `romodular_configure_stm32g0b1cbt6(target)`.
+- Generic ST-LINK flash/verify/reset and HOTPLUG memory-read primitives with
+  Bash/PowerShell parity, explicit failure handling and synthetic transport tests.
+- An independent board consumer fixture and CI cross-link checks. Product
+  tests, report formats, CI policy and physical evidence remain consumer-owned.
+
+### Changed
+
+- Board startup, linker/runtime code and programmer transports are now shared
+  infrastructure. Consumers pin this release rather than copying those mechanics.
+
 ## [0.4.0] - 2026-09-28
 
 ### Added

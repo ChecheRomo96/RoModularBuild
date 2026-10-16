@@ -1,0 +1,35 @@
+ENTRY(Reset_Handler)
+MEMORY
+{
+    FLASH (rx) : ORIGIN = 0x08000000, LENGTH = 128K
+    /* Normal 128 KiB SRAM region; no parity option changes. */
+    RAM (rwx) : ORIGIN = 0x20000000, LENGTH = 128K
+}
+_estack = ORIGIN(RAM) + LENGTH(RAM);
+SECTIONS
+{
+    .isr_vector : { KEEP(*(.isr_vector)) } > FLASH
+    .text : {
+        *(.text*) *(.rodata*) KEEP(*(.init)) KEEP(*(.fini)) . = ALIGN(4);
+    } > FLASH
+    .ARM.extab : { *(.ARM.extab*) } > FLASH
+    .ARM.exidx : { __exidx_start = .; *(.ARM.exidx*) __exidx_end = .; } > FLASH
+    .init_array : {
+        . = ALIGN(4); __init_array_start = .;
+        KEEP(*(SORT(.init_array.*))) KEEP(*(.init_array)) __init_array_end = .;
+    } > FLASH
+    .data : {
+        . = ALIGN(8); _sdata = .; *(.data*) . = ALIGN(8); _edata = .;
+    } > RAM AT > FLASH
+    _sidata = LOADADDR(.data);
+    .bss (NOLOAD) : {
+        . = ALIGN(8); _sbss = .; *(.bss*) *(COMMON) . = ALIGN(8); _ebss = .;
+    } > RAM
+    .heap (NOLOAD) : {
+        . = ALIGN(8); __heap_start = .; . += @ROMODULAR_STM32_HEAP_BYTES@; __heap_end = .;
+    } > RAM
+    .stack (NOLOAD) : { . = ALIGN(8); . += @ROMODULAR_STM32_STACK_BYTES@; } > RAM
+    /DISCARD/ : { *(.comment) *(.note*) }
+}
+ASSERT(SIZEOF(.isr_vector) == 192, "Incomplete STM32 vector table")
+ASSERT(__heap_end + @ROMODULAR_STM32_STACK_BYTES@ <= _estack, "Heap overlaps reserved stack")

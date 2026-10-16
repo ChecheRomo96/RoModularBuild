@@ -18,9 +18,12 @@ revision unless the user explicitly includes that repository.
   contracts, `CHANGELOG.md`, tags, and compatibility claims synchronized.
 - Keep shared presets hidden and prefixed with `romodular_`; keep shared cache
   variables prefixed with `ROMODULAR_`.
+- Own reusable board startup, linker scripts, bounded runtime support, firmware
+  artifact mechanics and generic programmer transports. These must not know
+  consumer targets, tests, report layouts or pass criteria.
 - Keep public consumer preset names, feature defaults, package creation,
-  artifacts, CI matrices, releases, firmware startup, linker scripts, SDK
-  integration, flashing, and hardware evidence in the consumer repository.
+  artifact policy, CI matrices, releases, SDK/application integration, test
+  reports and hardware evidence in the consumer repository.
 - Preserve behavioral parity between Bash and PowerShell workflow engines.
   A change to a shared lifecycle command normally requires both implementations
   and their contract tests to be updated.

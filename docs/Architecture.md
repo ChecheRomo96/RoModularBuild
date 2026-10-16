@@ -26,6 +26,8 @@ The shared layer may own:
 - hidden native and cross-compilation preset bases;
 - argument validation and safe build-directory handling;
 - generic configure, build, test, install, and clean execution; and
+- reusable board startup, linker/runtime support, artifact conversion and
+  programmer transports, as specified in [EmbeddedContract.md](EmbeddedContract.md); and
 - reusable composite actions that invoke the stable workflow contract on Bash
   and PowerShell runners.
 
@@ -38,8 +40,8 @@ Every consumer retains:
 - installed CMake package names and exported targets;
 - package validation and release policy;
 - documentation publication and repository permissions; and
-- exact MCU startup, linker scripts, SDK integration, flashing, and hardware
-  evidence.
+- application/SDK integration, test cases, report formats, hardware orchestration
+  and evidence. Consumers use shared board support and programmer primitives.
 
 ## Compatibility identity
 

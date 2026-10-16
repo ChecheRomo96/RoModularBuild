@@ -7,7 +7,8 @@ title: RoModularBuild documentation
 
 Shared CMake presets, toolchain profiles, and build workflows for projects
 that pin an exact tagged RoModularBuild revision. The current release is
-**0.4.0**.
+**0.5.0**. Reusable STM32 board support and ST-LINK operations are described
+in [EmbeddedContract.md](EmbeddedContract.md).
 
 RoModularBuild supplies the generic configure, build, test, install, and clean
 mechanics. Each consuming project owns its public presets, feature options,
