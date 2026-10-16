@@ -6,7 +6,7 @@ profiles and workflow behavior through it without sharing project policy.
 
 ## Current status
 
-Version `0.6.1` provides project-independent native, GNU Arm Embedded, and
+Version `0.6.2` provides project-independent native, GNU Arm Embedded, and
 AVR-GCC profiles; configure, build, test, install, and clean workflow engines;
 and pinned composite actions that invoke those workflows consistently on Bash
 and PowerShell runners. Consumers retain thin adapters that define their roots

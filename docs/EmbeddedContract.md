@@ -1,4 +1,4 @@
-# Embedded board and transport contract — 0.6.1
+# Embedded board and transport contract — 0.6.2
 
 RoModularBuild owns reusable MCU startup, linker templates, bounded runtime,
 artifact conversion and generic programmer operations. It has no dependency
@@ -105,3 +105,7 @@ The transport never interprets the bytes or reports a product test pass.
 cross-link this support without product source. Transport tests use fake
 programmers and never access hardware. Neither build-only CI nor simulated
 transport tests constitute physical execution evidence.
+
+AVR toolchains default `CMAKE_NO_SYSTEM_FROM_IMPORTED` to `ON`, keeping imported
+C++ package headers on normal include paths. This avoids AVR-GCC implicit C
+linkage for system headers and is covered by the imported-template fixture.

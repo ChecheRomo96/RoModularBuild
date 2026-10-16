@@ -1,8 +1,9 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <avr/sleep.h>
+#include <Portable.h>
 int main() {
-    UBRR0 = F_CPU / 16 / 9600 - 1;
+    UBRR0 = portable::identity(F_CPU / 16 / 9600 - 1);
     UCSR0B = (1 << TXEN0);
     UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);
     const char message[] = "AVR board fixture\n";
