@@ -36,6 +36,11 @@ lifecycle behavior are documented in
 [Workflow contract](docs/WorkflowContract.md). The local-action interface and
 single-pin CI model are documented in [CI contract](docs/CiContract.md).
 
+Proposed next steps for real desktop compilation, embedded artifact validation,
+and JUCE interoperability are in the
+[Platform workflow proposal](docs/PlatformWorkflowProposal.md). These are planned
+validation lanes, not additional supported-platform claims.
+
 ## Validate this repository
 
 On macOS or Linux:
