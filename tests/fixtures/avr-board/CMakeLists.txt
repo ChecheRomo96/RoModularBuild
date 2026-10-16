@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.25)
+project(AVRBoardFixture LANGUAGES CXX)
+include("${ROMODULAR_SOURCE_DIR}/cmake/boards/AVR.cmake")
+add_executable(AVRBoardFixture main.cpp)
+target_compile_definitions(AVRBoardFixture PRIVATE F_CPU=16000000UL)
+romodular_configure_avr(AVRBoardFixture)

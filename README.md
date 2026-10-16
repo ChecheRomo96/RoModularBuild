@@ -6,7 +6,7 @@ profiles and workflow behavior through it without sharing project policy.
 
 ## Current status
 
-Version `0.5.0` provides project-independent native, GNU Arm Embedded, and
+Version `0.6.0` provides project-independent native, GNU Arm Embedded, and
 AVR-GCC profiles; configure, build, test, install, and clean workflow engines;
 and pinned composite actions that invoke those workflows consistently on Bash
 and PowerShell runners. Consumers retain thin adapters that define their roots
@@ -74,3 +74,7 @@ consumer project.
 
 All rights are reserved. Viewing the repository does not grant permission to
 use, compile, copy, modify, or distribute it. See [LICENSE](LICENSE).
+
+AVR firmware artifacts, optional bare C++ allocation glue, and generic
+avrdude/simavr helpers support ATmega328P and ATmega2560. See the
+[embedded contract](docs/EmbeddedContract.md) for the shared interfaces.

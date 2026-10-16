@@ -1,4 +1,4 @@
-name: Shared STM32 Board Support
+name: Shared Embedded Support
 on:
   push:
   pull_request:
@@ -6,6 +6,39 @@ on:
 permissions:
   contents: read
 jobs:
+  avr:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        mcu: [atmega328p, atmega2560]
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install AVR tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ninja-build gcc-avr binutils-avr avr-libc simavr
+      - name: Build independent AVR consumer
+        run: |
+          cmake -S tests/fixtures/avr-board -B build/avr-fixture -G "Ninja Multi-Config" \
+            -DROMODULAR_SOURCE_DIR="$GITHUB_WORKSPACE" \
+            -DCMAKE_TOOLCHAIN_FILE="$GITHUB_WORKSPACE/cmake/toolchains/avr-gcc/${{ matrix.mcu }}.cmake"
+          cmake --build build/avr-fixture --config Debug
+          cmake --build build/avr-fixture --config Release
+      - name: Check transport contracts and execute fixture
+        run: |
+          sh tests/test-avr.sh
+          sh scripts/simavr.sh --mcu ${{ matrix.mcu }} \
+            --file build/avr-fixture/Release/AVRBoardFixture.hex --log build/simavr.log
+          grep -q "AVR board fixture" build/simavr.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: shared-avr-${{ matrix.mcu }}
+          path: |
+            build/avr-fixture/*/AVRBoardFixture.*
+            build/simavr.log*
   board:
     runs-on: ubuntu-24.04
     timeout-minutes: 25

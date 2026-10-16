@@ -8,6 +8,8 @@ $workflowScripts = @(
     "install.ps1",
     "clean.ps1",
     "stlink.ps1",
+    "avrdude.ps1",
+    "simavr.ps1",
     "validate.ps1"
 )
 foreach ($workflowScript in $workflowScripts) {

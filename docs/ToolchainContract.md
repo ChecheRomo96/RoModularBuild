@@ -37,6 +37,7 @@ variable names are forbidden in this repository.
 | `romodular_arm_none_eabi_cortex_m4f_hard` | Cortex-M4 | hard, `fpv4-sp-d16` |
 | `romodular_arm_none_eabi_cortex_m7f_hard` | Cortex-M7 | hard, `fpv5-d16` |
 | `romodular_atmega328p_avrgcc_avr5` | AVR5 | ATmega328P |
+| `romodular_atmega2560_avrgcc_avr6` | AVR6 | ATmega2560 |
 
 Each embedded profile selects `Ninja Multi-Config`, publishes Debug and Release
 as configurations, enables compile-command generation, and resolves its

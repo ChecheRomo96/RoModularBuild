@@ -32,10 +32,13 @@ include(CTest)
 if(BUILD_TESTING AND ROMODULAR_BUILD_SELF_TESTS)
     find_program(ROMODULAR_POWERSHELL NAMES pwsh)
     if(ROMODULAR_POWERSHELL)
+        add_test(NAME romodular.avr.powershell
+            COMMAND "${ROMODULAR_POWERSHELL}" -NoProfile -File "${CMAKE_CURRENT_LIST_DIR}/tests/TestAvr.ps1")
         add_test(NAME romodular.stlink.powershell
             COMMAND "${ROMODULAR_POWERSHELL}" -NoProfile -File "${CMAKE_CURRENT_LIST_DIR}/tests/TestStlink.ps1")
     endif()
     if(UNIX)
+        add_test(NAME romodular.avr.shell COMMAND sh "${CMAKE_CURRENT_LIST_DIR}/tests/test-avr.sh")
         add_test(NAME romodular.stlink.shell COMMAND sh "${CMAKE_CURRENT_LIST_DIR}/tests/test-stlink.sh")
     endif()
     add_test(
@@ -108,5 +111,13 @@ if(BUILD_TESTING AND ROMODULAR_BUILD_SELF_TESTS)
         "-mmcu=atmega328p -ffunction-sections -fdata-sections"
         "-mmcu=atmega328p -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fcheck-new"
         "-mmcu=atmega328p -Wl,--gc-sections"
+    )
+    romodular_add_toolchain_test(
+        avr_atmega2560_avr6
+        cmake/toolchains/avr-gcc/atmega2560.cmake
+        avr6
+        "-mmcu=atmega2560 -ffunction-sections -fdata-sections"
+        "-mmcu=atmega2560 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fcheck-new"
+        "-mmcu=atmega2560 -Wl,--gc-sections"
     )
 endif()
