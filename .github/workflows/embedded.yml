@@ -1,0 +1,31 @@
+name: Shared STM32 Board Support
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  board:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install GNU Arm and newlib
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends ninja-build gcc-arm-none-eabi \
+            binutils-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
+      - name: Build independent board consumer
+        run: |
+          cmake -S tests/fixtures/stm32-board -B build/board-fixture -G "Ninja Multi-Config" \
+            -DROMODULAR_SOURCE_DIR="$GITHUB_WORKSPACE" \
+            -DCMAKE_TOOLCHAIN_FILE="$GITHUB_WORKSPACE/cmake/toolchains/arm-none-eabi/cortex-m0plus-soft.cmake"
+          cmake --build build/board-fixture --config Debug
+          cmake --build build/board-fixture --config Release
+      - name: Check shell transport contract without hardware
+        run: sh tests/test-stlink.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shared-stm32-board-fixture
+          path: build/board-fixture/*/BoardFixture.*

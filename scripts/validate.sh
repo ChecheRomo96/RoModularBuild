@@ -13,6 +13,7 @@ sh -n \
     scripts/test.sh \
     scripts/install.sh \
     scripts/clean.sh \
+    scripts/stlink.sh \
     scripts/validate.sh
 romodular_run_cmake --list-presets=all
 

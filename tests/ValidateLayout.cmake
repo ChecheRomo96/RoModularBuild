@@ -43,6 +43,13 @@ set(ROMODULAR_REQUIRED_FILES
     docs/CiContract.md
     docs/ToolchainContract.md
     docs/WorkflowContract.md
+    docs/EmbeddedContract.md
+    cmake/boards/STM32G0B1CBT6.cmake
+    cmake/boards/stm32g0b1cbt6/startup.S
+    cmake/boards/stm32g0b1cbt6/runtime.cpp
+    cmake/boards/stm32g0b1cbt6/memory.ld.in
+    scripts/stlink.ps1
+    scripts/stlink.sh
 )
 
 foreach(ROMODULAR_REQUIRED_FILE IN LISTS ROMODULAR_REQUIRED_FILES)
@@ -67,6 +74,12 @@ if(NOT ROMODULAR_ACTUAL_VERSION STREQUAL ROMODULAR_EXPECTED_VERSION)
 endif()
 
 set(ROMODULAR_GENERIC_FILES
+    cmake/boards/STM32G0B1CBT6.cmake
+    cmake/boards/stm32g0b1cbt6/startup.S
+    cmake/boards/stm32g0b1cbt6/runtime.cpp
+    cmake/boards/stm32g0b1cbt6/memory.ld.in
+    scripts/stlink.ps1
+    scripts/stlink.sh
     cmake/RoModularBuildVersion.cmake
     cmake/presets/native.json
     cmake/presets/arm-none-eabi.json
@@ -105,7 +118,7 @@ foreach(ROMODULAR_GENERIC_FILE IN LISTS ROMODULAR_GENERIC_FILES)
         "${ROMODULAR_ROOT}/${ROMODULAR_GENERIC_FILE}"
         ROMODULAR_GENERIC_CONTENT
     )
-    if(ROMODULAR_GENERIC_CONTENT MATCHES "FOUNDATION_|MCC_")
+    if(ROMODULAR_GENERIC_CONTENT MATCHES "FOUNDATION_|MCC_|CPSTL_")
         message(FATAL_ERROR
             "Project-specific identifier found in ${ROMODULAR_GENERIC_FILE}"
         )

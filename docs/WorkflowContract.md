@@ -48,4 +48,6 @@ it does not know any consumer option prefix or target name.
 
 Debug and Release remain configurations within one preset identity. The engine
 does not create packages, publish releases, validate consumer metadata, select
-firmware startup code, or define public preset names.
+application firmware logic, or define public preset names. Board startup,
+linker/runtime support and programmer primitives are separate shared APIs;
+see [EmbeddedContract.md](EmbeddedContract.md).

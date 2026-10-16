@@ -30,6 +30,14 @@ message(STATUS "Validating ${PROJECT_NAME} ${PROJECT_VERSION}")
 include(CTest)
 
 if(BUILD_TESTING AND ROMODULAR_BUILD_SELF_TESTS)
+    find_program(ROMODULAR_POWERSHELL NAMES pwsh)
+    if(ROMODULAR_POWERSHELL)
+        add_test(NAME romodular.stlink.powershell
+            COMMAND "${ROMODULAR_POWERSHELL}" -NoProfile -File "${CMAKE_CURRENT_LIST_DIR}/tests/TestStlink.ps1")
+    endif()
+    if(UNIX)
+        add_test(NAME romodular.stlink.shell COMMAND sh "${CMAKE_CURRENT_LIST_DIR}/tests/test-stlink.sh")
+    endif()
     add_test(
         NAME romodular.repository_contract
         COMMAND
