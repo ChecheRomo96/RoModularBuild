@@ -7,6 +7,7 @@ All notable changes to RoModularBuild are recorded here.
 ### Changed
 
 - Establish the new RoModularBuild release baseline at version 0.0.1.
+- Remove obsolete repository-specific guidance.
 
 ## [0.6.2] - 2026-10-16
 
