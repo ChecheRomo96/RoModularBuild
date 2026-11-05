@@ -1,4 +1,4 @@
-# Embedded board and transport contract — 0.6.2
+# Embedded board and transport contract — 0.0.1
 
 RoModularBuild owns reusable MCU startup, linker templates, bounded runtime,
 artifact conversion and generic programmer operations. It has no dependency
