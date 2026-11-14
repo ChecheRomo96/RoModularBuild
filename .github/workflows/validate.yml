@@ -18,10 +18,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Require VERSION to match the tag
-        shell: bash
-        run: |
-          version=$(sed -n '1{s/[[:space:]]//g;p;}' VERSION)
-          test "$GITHUB_REF_NAME" = "v$version"
+        uses: ./actions/validate-release-version
+        with:
+          tag: ${{ github.ref_name }}
 
   repository-contract:
     name: ${{ matrix.name }}
