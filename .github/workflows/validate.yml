@@ -9,6 +9,20 @@ permissions:
   contents: read
 
 jobs:
+  release-version:
+    name: Validate release version
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Require VERSION to match the tag
+        shell: bash
+        run: |
+          version=$(sed -n '1{s/[[:space:]]//g;p;}' VERSION)
+          test "$GITHUB_REF_NAME" = "v$version"
+
   repository-contract:
     name: ${{ matrix.name }}
     runs-on: ${{ matrix.os }}

@@ -22,9 +22,15 @@ export AVR_TEST_STATUS=0
 sh "$ROOT/scripts/simavr.sh" --tool "$TEMP/tool" --mcu atmega328p --file "$TEMP/firmware with spaces.hex" --log "$TEMP/sim.log"
 grep -Fx atmega328p "$AVR_TEST_ARGS"
 # Homebrew exposes GNU timeout as gtimeout; exercise that path independently.
+# Use a wrapper instead of a symlink: current Linux runners can provide a
+# coreutils timeout implementation that rejects a different executable name.
 mkdir "$TEMP/bin"
 for COMMAND in dirname mkdir cat; do ln -s "$(command -v "$COMMAND")" "$TEMP/bin/$COMMAND"; done
-ln -s "$(command -v timeout || command -v gtimeout)" "$TEMP/bin/gtimeout"
+cat > "$TEMP/bin/gtimeout" <<SH
+#!/bin/sh
+exec "$(command -v gtimeout || command -v timeout)" "\$@"
+SH
+chmod +x "$TEMP/bin/gtimeout"
 PATH="$TEMP/bin" /bin/sh "$ROOT/scripts/simavr.sh" --tool "$TEMP/tool" --mcu atmega2560 --file "$TEMP/firmware with spaces.hex" --log "$TEMP/sim.log"
 export AVR_TEST_STATUS=7
 if sh "$ROOT/scripts/simavr.sh" --tool "$TEMP/tool" --mcu atmega328p --file "$TEMP/firmware with spaces.hex" --log "$TEMP/sim.log"; then exit 1; fi
